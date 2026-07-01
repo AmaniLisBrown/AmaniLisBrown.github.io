@@ -1,11 +1,12 @@
-// ======================================
-// Amani Brown Portfolio
-// script.js
-// ======================================
+/*=========================================
+Amani Brown Portfolio
+script.js
+=========================================*/
 
-// Smooth scrolling for navigation links
-document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-    anchor.addEventListener("click", function (e) {
+// Smooth scrolling
+document.querySelectorAll('a[href^="#"]').forEach(link => {
+    link.addEventListener("click", function (e) {
+
         e.preventDefault();
 
         const target = document.querySelector(this.getAttribute("href"));
@@ -16,21 +17,26 @@ document.querySelectorAll('a[href^="#"]').forEach(anchor => {
                 block: "start"
             });
         }
+
     });
 });
 
-// Navbar shadow on scroll
+// Navbar background on scroll
 const navbar = document.querySelector(".navbar");
 
 window.addEventListener("scroll", () => {
 
-    if (window.scrollY > 40) {
+    if (window.scrollY > 50) {
 
-        navbar.classList.add("shadow");
+        navbar.style.background = "rgba(255,255,255,.97)";
+        navbar.style.boxShadow = "0 10px 30px rgba(0,0,0,.08)";
+        navbar.style.padding = "12px 0";
 
     } else {
 
-        navbar.classList.remove("shadow");
+        navbar.style.background = "rgba(255,255,255,.92)";
+        navbar.style.boxShadow = "none";
+        navbar.style.padding = "18px 0";
 
     }
 
@@ -50,7 +56,9 @@ const observer = new IntersectionObserver((entries) => {
     });
 
 }, {
-    threshold: .2
+
+    threshold: 0.15
+
 });
 
 document.querySelectorAll("section").forEach(section => {
@@ -61,8 +69,66 @@ document.querySelectorAll("section").forEach(section => {
 
 });
 
-// Card hover animation
-document.querySelectorAll(".card").forEach(card => {
+// Hero animation
+window.addEventListener("load", () => {
+
+    document.querySelector(".hero").classList.add("fade-up");
+
+});
+
+// Active navigation
+const sections = document.querySelectorAll("section");
+const navLinks = document.querySelectorAll(".nav-link");
+
+window.addEventListener("scroll", () => {
+
+    let current = "";
+
+    sections.forEach(section => {
+
+        const top = section.offsetTop - 120;
+
+        if (pageYOffset >= top) {
+
+            current = section.getAttribute("id");
+
+        }
+
+    });
+
+    navLinks.forEach(link => {
+
+        link.classList.remove("active");
+
+        if (link.getAttribute("href") === "#" + current) {
+
+            link.classList.add("active");
+
+        }
+
+    });
+
+});
+
+// Portfolio image hover effect
+document.querySelectorAll(".project-card img").forEach(image => {
+
+    image.addEventListener("mouseenter", () => {
+
+        image.style.transform = "scale(1.08)";
+
+    });
+
+    image.addEventListener("mouseleave", () => {
+
+        image.style.transform = "scale(1)";
+
+    });
+
+});
+
+// Skill card hover effect
+document.querySelectorAll(".skill-card").forEach(card => {
 
     card.addEventListener("mouseenter", () => {
 
@@ -78,13 +144,37 @@ document.querySelectorAll(".card").forEach(card => {
 
 });
 
-// Dynamic year
+// Timeline animation
+document.querySelectorAll(".timeline-content").forEach(card => {
+
+    observer.observe(card);
+
+});
+
+// Contact card animation
+document.querySelectorAll(".contact-grid div").forEach(card => {
+
+    observer.observe(card);
+
+});
+
+// Education animation
+const educationCard = document.querySelector(".education-card");
+
+if (educationCard) {
+
+    observer.observe(educationCard);
+
+}
+
+// Footer year
 const footer = document.querySelector("footer p");
 
 if (footer) {
 
-    footer.innerHTML = `© ${new Date().getFullYear()} Amani Brown | Marketing Professional`;
+    footer.innerHTML =
+        `© ${new Date().getFullYear()} Amani Brown • Marketing Professional • Digital Marketing • Graphic Design`;
 
 }
 
-console.log("Portfolio Loaded Successfully");
+console.log("Amani Brown Portfolio Loaded Successfully");
