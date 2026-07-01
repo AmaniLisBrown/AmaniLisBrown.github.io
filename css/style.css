@@ -1,1 +1,199 @@
+/* ===========================
+   Amani Brown Portfolio
+   Blush & Sage Theme
+=========================== */
 
+:root{
+    --bg:#F8F6F2;
+    --white:#ffffff;
+    --sage:#5F7A61;
+    --rose:#D9A299;
+    --charcoal:#2E2E2E;
+    --border:#E9E5DE;
+}
+
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+}
+
+html{
+    scroll-behavior:smooth;
+}
+
+body{
+    font-family:'Inter',sans-serif;
+    background:var(--bg);
+    color:var(--charcoal);
+    line-height:1.7;
+}
+
+/* Navigation */
+
+.navbar{
+    padding:18px 0;
+    background:white !important;
+}
+
+.navbar-brand{
+    font-family:'Poppins',sans-serif;
+    font-size:1.5rem;
+    font-weight:700;
+    color:var(--sage)!important;
+}
+
+.nav-link{
+    color:var(--charcoal)!important;
+    font-weight:500;
+    margin-left:20px;
+    transition:.3s;
+}
+
+.nav-link:hover{
+    color:var(--sage)!important;
+}
+
+/* Hero */
+
+.hero{
+    padding:130px 0 90px;
+    min-height:90vh;
+    display:flex;
+    align-items:center;
+}
+
+.hero h1{
+    font-family:'Poppins',sans-serif;
+    font-size:4rem;
+    font-weight:700;
+    color:var(--charcoal);
+}
+
+.hero h3{
+    color:var(--sage);
+    margin-bottom:25px;
+}
+
+.hero p{
+    font-size:1.15rem;
+    max-width:600px;
+    margin-bottom:35px;
+}
+
+.hero .rounded-circle{
+    background:white!important;
+    border:8px solid #fff;
+    box-shadow:0 20px 40px rgba(0,0,0,.08)!important;
+}
+
+.btn-success{
+    background:var(--sage)!important;
+    border:none!important;
+    border-radius:40px;
+    padding:14px 28px;
+}
+
+.btn-success:hover{
+    background:#4D6650!important;
+}
+
+.btn-outline-dark{
+    border-radius:40px;
+    padding:14px 28px;
+}
+
+/* Sections */
+
+section{
+    padding:90px 0;
+}
+
+section h2{
+    font-family:'Poppins',sans-serif;
+    font-size:2.5rem;
+    margin-bottom:40px;
+    text-align:center;
+}
+
+.card{
+    border:none;
+    border-radius:22px;
+    overflow:hidden;
+    transition:.35s;
+    box-shadow:0 15px 30px rgba(0,0,0,.05);
+}
+
+.card:hover{
+    transform:translateY(-8px);
+    box-shadow:0 25px 45px rgba(0,0,0,.12);
+}
+
+.card-body{
+    padding:30px;
+}
+
+.card h4,
+.card h5{
+    color:var(--sage);
+    margin-bottom:15px;
+}
+
+.card img{
+    height:240px;
+    object-fit:cover;
+}
+
+/* Contact */
+
+#contact{
+    text-align:center;
+}
+
+#contact p{
+    font-size:1.1rem;
+}
+
+/* Footer */
+
+footer{
+    background:#2E2E2E!important;
+    color:white;
+}
+
+/* Responsive */
+
+@media(max-width:992px){
+
+.hero{
+text-align:center;
+padding-top:140px;
+}
+
+.hero h1{
+font-size:3rem;
+}
+
+.hero .rounded-circle{
+margin-top:50px!important;
+}
+
+}
+
+@media(max-width:576px){
+
+.hero h1{
+font-size:2.4rem;
+}
+
+.hero h3{
+font-size:1.3rem;
+}
+
+.btn{
+display:block;
+width:100%;
+margin-bottom:15px;
+}
+
+}
