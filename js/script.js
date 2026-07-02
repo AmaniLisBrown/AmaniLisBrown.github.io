@@ -1,53 +1,59 @@
-/*=========================================
-Amani Brown Portfolio
+/*==========================================
+AMANI BROWN PORTFOLIO
 script.js
-=========================================*/
+==========================================*/
 
 // Smooth scrolling
-document.querySelectorAll('a[href^="#"]').forEach(link => {
-    link.addEventListener("click", function (e) {
+document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+
+    anchor.addEventListener("click", function(e){
 
         e.preventDefault();
 
         const target = document.querySelector(this.getAttribute("href"));
 
-        if (target) {
+        if(target){
+
             target.scrollIntoView({
-                behavior: "smooth",
-                block: "start"
+
+                behavior:"smooth",
+                block:"start"
+
             });
+
         }
 
     });
+
 });
 
-// Navbar background on scroll
+// Navbar effect
 const navbar = document.querySelector(".navbar");
 
-window.addEventListener("scroll", () => {
+window.addEventListener("scroll",()=>{
 
-    if (window.scrollY > 50) {
+    if(window.scrollY>40){
 
-        navbar.style.background = "rgba(255,255,255,.97)";
-        navbar.style.boxShadow = "0 10px 30px rgba(0,0,0,.08)";
-        navbar.style.padding = "12px 0";
+        navbar.style.background="rgba(255,255,255,.98)";
+        navbar.style.padding="12px 0";
+        navbar.style.boxShadow="0 15px 35px rgba(0,0,0,.08)";
 
-    } else {
+    }else{
 
-        navbar.style.background = "rgba(255,255,255,.92)";
-        navbar.style.boxShadow = "none";
-        navbar.style.padding = "18px 0";
+        navbar.style.background="rgba(255,255,255,.92)";
+        navbar.style.padding="18px 0";
+        navbar.style.boxShadow="none";
 
     }
 
 });
 
-// Fade-in animation
-const observer = new IntersectionObserver((entries) => {
+// Reveal animations
+const observer = new IntersectionObserver((entries)=>{
 
-    entries.forEach(entry => {
+    entries.forEach(entry=>{
 
-        if (entry.isIntersecting) {
+        if(entry.isIntersecting){
 
             entry.target.classList.add("show");
 
@@ -55,52 +61,61 @@ const observer = new IntersectionObserver((entries) => {
 
     });
 
-}, {
+},{
 
-    threshold: 0.15
+    threshold:.15
 
 });
 
-document.querySelectorAll("section").forEach(section => {
+document.querySelectorAll("section").forEach(section=>{
 
     section.classList.add("hidden");
-
     observer.observe(section);
 
 });
 
-// Hero animation
-window.addEventListener("load", () => {
+// Hover lift
+document.querySelectorAll(".project-card,.skill-card,.timeline-content,.contact-card,.education-card,.about-card").forEach(card=>{
 
-    document.querySelector(".hero").classList.add("fade-up");
+    card.addEventListener("mouseenter",()=>{
+
+        card.style.transform="translateY(-10px)";
+
+    });
+
+    card.addEventListener("mouseleave",()=>{
+
+        card.style.transform="translateY(0px)";
+
+    });
 
 });
 
 // Active navigation
-const sections = document.querySelectorAll("section");
-const navLinks = document.querySelectorAll(".nav-link");
+const sections=document.querySelectorAll("section");
+const navLinks=document.querySelectorAll(".nav-link");
 
-window.addEventListener("scroll", () => {
+window.addEventListener("scroll",()=>{
 
-    let current = "";
+    let current="";
 
-    sections.forEach(section => {
+    sections.forEach(section=>{
 
-        const top = section.offsetTop - 120;
+        const sectionTop=section.offsetTop-140;
 
-        if (pageYOffset >= top) {
+        if(pageYOffset>=sectionTop){
 
-            current = section.getAttribute("id");
+            current=section.getAttribute("id");
 
         }
 
     });
 
-    navLinks.forEach(link => {
+    navLinks.forEach(link=>{
 
         link.classList.remove("active");
 
-        if (link.getAttribute("href") === "#" + current) {
+        if(link.getAttribute("href")==="#"+current){
 
             link.classList.add("active");
 
@@ -110,71 +125,13 @@ window.addEventListener("scroll", () => {
 
 });
 
-// Portfolio image hover effect
-document.querySelectorAll(".project-card img").forEach(image => {
-
-    image.addEventListener("mouseenter", () => {
-
-        image.style.transform = "scale(1.08)";
-
-    });
-
-    image.addEventListener("mouseleave", () => {
-
-        image.style.transform = "scale(1)";
-
-    });
-
-});
-
-// Skill card hover effect
-document.querySelectorAll(".skill-card").forEach(card => {
-
-    card.addEventListener("mouseenter", () => {
-
-        card.style.transform = "translateY(-10px)";
-
-    });
-
-    card.addEventListener("mouseleave", () => {
-
-        card.style.transform = "translateY(0px)";
-
-    });
-
-});
-
-// Timeline animation
-document.querySelectorAll(".timeline-content").forEach(card => {
-
-    observer.observe(card);
-
-});
-
-// Contact card animation
-document.querySelectorAll(".contact-grid div").forEach(card => {
-
-    observer.observe(card);
-
-});
-
-// Education animation
-const educationCard = document.querySelector(".education-card");
-
-if (educationCard) {
-
-    observer.observe(educationCard);
-
-}
-
 // Footer year
-const footer = document.querySelector("footer p");
+const footer=document.querySelector("footer p:last-child");
 
-if (footer) {
+if(footer){
 
-    footer.innerHTML =
-        `© ${new Date().getFullYear()} Amani Brown • Marketing Professional • Digital Marketing • Graphic Design`;
+    footer.innerHTML=`© ${new Date().getFullYear()} Amani Brown. All Rights Reserved.`;
 
 }
 
-console.log("Amani Brown Portfolio Loaded Successfully");
+console.log("Amani Brown Portfolio Loaded");
